@@ -12,10 +12,10 @@ function CardDogs({ id, image, name, temperaments, weight }) {
       <h3>Temperamento: {temperaments}</h3>
       <h3>Peso: {weight[0]}-{weight[1]} kg</h3>
       <Link to={`/details/${id}`}>
-        <button>VER DETALLES</button>
+        <button>IR A DETALLES</button>
       </Link>
 
-    </CardStyled>
+    </CardStyled >
   )
 }
 

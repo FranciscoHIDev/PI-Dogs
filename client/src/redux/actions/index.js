@@ -27,6 +27,7 @@ export const getAllDogs = () => async (dispatch) => {
 export const getDogId = (id) => async (dispatch) => {
     try {
         const dog = await axios.get(`${INFO_DB_URL}/${id}`)
+
         dispatch({
             type: "GET_DOG_ID",
             payload: dog.data

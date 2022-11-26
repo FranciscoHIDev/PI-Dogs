@@ -19,17 +19,16 @@ function Dogs() {
       <h1>Cargando dogs...</h1>
       {dogs.length > 0 &&
         dogs?.map(d => (
-          <CardDogs key={d.id} 
+          <CardDogs key={d.id}
+            id={d.id}
             image={d.image}
             name={d.name}
             weight={d.weight}
-            temperaments={d.temperaments.map(t => t + ', ')}
+            temperaments={d.temperaments.map(t => t + ', ')} />
 
 
 
 
-
-          />
 
         ))}
     </>

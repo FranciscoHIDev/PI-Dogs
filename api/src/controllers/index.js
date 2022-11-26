@@ -6,6 +6,7 @@ const {
 
 const API_ALL_URL = `https://api.thedogapi.com/v1/breeds?api_key=${MY_API_KEY}`
 
+
 const getApiInfo = async () => {
     const { data } = await axios.get(API_ALL_URL)
 
