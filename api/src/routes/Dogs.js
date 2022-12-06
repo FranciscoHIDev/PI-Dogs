@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
         if (dog.length) {
             res.status(200).send(dog)
         } else {
-            res.status(404).send("Dog con ese ID no encontrado")
+            res.status(400).send("Dog con ese ID no encontrado")
         }
 
 
@@ -43,28 +43,29 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const { name, height, weight, temperament, life_span, image } = req.body
 
+    const { name, height, weight, life_span, image, temperament } = req.body
+
+    if (!name|| !height || !weight || !life_span || !temperament) {
+        return res.status(400).send("¡Faltan datos por completar!")
+    }
     try {
-        if (!name, !height, !weight, !temperament, !life_span, !image) {
-            return res.status(400).send("¡Faltan datos por completar!")
-        } else {
-            let dog = await Dog.create({
-                name,
-                height,
-                weight,
-                life_span,
-                image: image ? image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgjDd9EDL6VoNdUZyy9TcCDBr9l3X56PvySw&usqp=CAU"
-            })
-            let associatedTemp = await Temperament.findAll({
-                where: { name: temperament }
-            })
-            dog.addTemperament(associatedTemp)
-            res.status(200).send("¡Dog creado exitosamente!")
-        }
+        let newDog = await Dog.create({
+            name,
+            height,
+            weight,
+            life_span,
+            image: image ? image : "https://www.nationalgeographic.com.es/medio/2019/06/13/_db0c0e4b_800x800.jpg"
+        })
+        let associatedTemp = await Temperament.findAll({
+            where: { name: temperament }
+        })
+        newDog.addTemperament(associatedTemp)
+        res.status(200).send(newDog)
+
 
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error + "Ocurrio un error")
 
     }
 

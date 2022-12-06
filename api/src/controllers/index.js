@@ -65,8 +65,8 @@ const getAllTemperaments = async () => {
     const { data } = await axios.get(API_ALL_URL)
     const temperaments = data.map(t => (t.temperament))
     const tps = temperaments.toString().split(",");
-    tps.forEach(t => {
-        let i = t.trim()
+    tps.forEach(el => {
+        let i = el.trim()
         Temperament.findOrCreate({ where: { name: i } });
     });
     const allTemperaments = await Temperament.findAll()

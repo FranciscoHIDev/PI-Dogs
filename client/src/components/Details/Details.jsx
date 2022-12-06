@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getDogId } from '../../redux/actions/index'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 //import { useDispatch, useSelector } from 'react-redux'
 //import { useParams } from 'react-router-dom'
 
@@ -11,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 //     const { id } = useParams()
 //     const dispatch = useDispatch()
-//     const dog = useSelector(state => state.dog)
+//     const dog = useSelector(state => state.dogDetail)
 
 //     React.useEffect(() => {
 //         dispatch(getDogId(id))
@@ -52,28 +53,29 @@ class Details extends Component {
     render() {
         return (
 
-            <>
+            <DetailStyled>
 
                 {this.props.dog ? (
 
                     <div>
-                        <Link to={"/home"}>
-                            <button>Back</button>
 
-                        </Link>
                         <img src={this.props.dog[0]?.image} alt={this.props.dog[0]?.name} />
                         <h3>Nombre: {this.props.dog[0]?.name}</h3>
                         <h3>Altura: {this.props.dog[0]?.height[0]}-{this.props.dog[0]?.height[1]} cm</h3>
                         <h3>Peso: {this.props.dog[0]?.weight[0]}-{this.props.dog[0]?.weight[1]} kg</h3>
                         <h3>Años de vida: {this.props.dog[0]?.life_span}</h3>
                         <h3>Temperamento: {this.props.dog[0]?.temperaments?.map(t => t + ', ')}</h3>
+                        <Link to={"/home"}>
+                            <button>Back</button>
+
+                        </Link>
                     </div>
 
                 ) : (
                     <img src='https://acegif.com/wp-content/uploads/loading-4.gif' alt='loading' />
 
                 )}
-            </>
+            </DetailStyled>
 
 
         )
@@ -82,7 +84,7 @@ class Details extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        dog: state.dog
+        dog: state.dogDetail
     }
 }
 
@@ -92,4 +94,30 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+
+
+const DetailStyled = styled.div`
+display: flex;
+flex-direction: column;
+width: 300px;
+margin: 40px auto;
+
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+border-radius:5px;
+padding: 8px;
+
+
+
+
+cursor: pointer;
+&:hover {
+    transform:scale(1.1);
+}
+
+`
+
+
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(Details)
+
