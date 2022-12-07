@@ -54,9 +54,10 @@ display: flex;
     min-width: 35px;
     max-width: 50px;
 
-    .button:hover {  
-  background-color:#e6576e; 
+   :hover {  
+  background:#e6576e; 
     }
+  
   
 
   

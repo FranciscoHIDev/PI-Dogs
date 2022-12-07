@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getDogId } from '../../redux/actions/index'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+
 //import { useDispatch, useSelector } from 'react-redux'
 //import { useParams } from 'react-router-dom'
 
@@ -59,7 +60,7 @@ class Details extends Component {
 
                     <div>
 
-                        <img src={this.props.dog[0]?.image} alt={this.props.dog[0]?.name} />
+                        <ImagenStyled src={this.props.dog[0]?.image} alt={this.props.dog[0]?.name}></ImagenStyled> 
                         <h3>Nombre: {this.props.dog[0]?.name}</h3>
                         <h3>Altura: {this.props.dog[0]?.height[0]}-{this.props.dog[0]?.height[1]} cm</h3>
                         <h3>Peso: {this.props.dog[0]?.weight[0]}-{this.props.dog[0]?.weight[1]} kg</h3>
@@ -99,7 +100,7 @@ const mapDispatchToProps = (dispatch) => {
 const DetailStyled = styled.div`
 display: flex;
 flex-direction: column;
-width: 300px;
+width: 500px;
 margin: 40px auto;
 
 box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
@@ -115,7 +116,12 @@ cursor: pointer;
 }
 
 `
+const ImagenStyled = styled.img`
+width: 500px;
+height: 300px;
+border-radius: 30px;
 
+`
 
 
 

@@ -9,8 +9,8 @@ function CardDogs({ id, image, name, temperaments, weight }) {
   
 <Link to={`/details/${id}`}>
     <CardStyled>
-      <img src={image} alt={name} />
-      <h3>Nombre: {name}</h3>
+      <ImagenStyled src={image} alt={name} ></ImagenStyled>
+      <h3>{name}</h3>
       <h3>Temperamento: {temperaments}</h3>
       <h3>Peso: {weight[0]}-{weight[1]} kg</h3>
           
@@ -31,6 +31,17 @@ margin-left: 1rem;
 box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 border-radius:10px;
 padding: 8px;
+
+`
+
+const ImagenStyled = styled.img`
+width: 300px;
+height: 200px;
+border-radius: 20px;
+
+
+
+
 `
 
 
